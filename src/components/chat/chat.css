@@ -3,6 +3,8 @@
     border-left: 1px solid #dddddd35;
     border-right: 1px solid #dddddd35;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 
     .top{
         padding: 20px;
@@ -52,9 +54,61 @@
         }
     }
 
-    .center{
+    .center {
+        padding: 20px;
+        flex: 1;            /* Main scrollable area */
+        overflow-y: auto;   /* ✅ Correct scroll behavior */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
+        .message{
+            max-width: 70%;
+            display: flex;
+            gap: 10px;
+
+            &.own{
+                align-self: flex-end;
+
+                .text{
+                    p{
+                        background-color: #5183fe;
+                    }
+                }                
+            }
+
+            img{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .text{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
+
+                p{
+                    padding: 20px;
+                    background-color: rgba(17, 24, 40, 0.3);
+                    border-radius: 10px;
+                }
+                span{
+                    font-size: 14px;
+                    font-weight: 300;
+                    color: #a5a5a5;
+                }
+            }
+        }
     }
+
     .bottom{
         padding: 20px;
         display: flex;
@@ -62,6 +116,7 @@
         justify-content: space-between;
         border-top: 1px solid #dddddd35;
         gap: 20px;
+        margin-top: auto;
 
         .icons{
             display: flex;
@@ -83,6 +138,16 @@
             padding: 20px;
             border-radius: 10px;
             font-size: 16px;
+        }
+
+        .emoji{
+            position: relative;
+
+            .picker{
+                position: absolute;
+                bottom: 50px;
+                left: 0;
+            }
         }
 
         .sendButton{
