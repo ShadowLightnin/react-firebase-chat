@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './chatlist.css'
+import './chatList.css'
 import AddUser from './addUser/AddUser';
 
 const Chatlist = () => {
