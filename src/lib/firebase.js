@@ -9,12 +9,11 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "parlimentofjustice-6354e.firebaseapp.com",
-  databaseURL: "https://parlimentofjustice-6354e-default-rtdb.firebaseio.com",
-  projectId: "parlimentofjustice-6354e",
-  storageBucket: "parlimentofjustice-6354e.appspot.com",
-  messagingSenderId: "307152016266",
-  appId: "1:307152016266:web:8c8277dbdf3a5b4645ae73",
+  authDomain: "chatapptest-2782a.firebaseapp.com",
+  projectId: "chatapptest-2782a",
+  storageBucket: "chatapptest-2782a.firebasestorage.app",
+  messagingSenderId: "73298509507",
+  appId: "1:73298509507:web:859d13ffa838f2e80fec76"
 };
 
 // Initialize Firebase
