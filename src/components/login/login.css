@@ -20,6 +20,7 @@
             gap: 20px;
 
             input {
+                width: 100%;
                 padding: 20px;
                 border: none;
                 outline: none;
@@ -67,5 +68,25 @@
         height: 80%;
         width: 2px;
         background-color: #dddddd35;
+    }
+}
+
+/* 📲 Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .login {
+        flex-direction: column;  /* 🔄 Stack items vertically */
+        gap: 50px;               /* 🔄 Adjust spacing for compactness */
+        padding: 20px;           /* ✅ Padding to prevent content from hitting screen edges */
+    }
+
+    .separator {
+        height: 2px;             /* 🔄 Make the separator horizontal for mobile */
+        width: 80%;              /* ✅ Make the separator stretch across content width */
+        background-color: #dddddd35;
+    }
+
+    .item {
+        width: 100%;             /* 🔄 Full width for better use of screen space */
+        max-width: 400px;        /* ✅ Prevents content from becoming too wide */
     }
 }

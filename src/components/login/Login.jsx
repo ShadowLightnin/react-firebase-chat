@@ -96,7 +96,7 @@ const Login = () => {
                         Upload an image
                     </label>
                     <input type="file" id='file' style={{ display: "none" }} onChange={handleAvatar} />
-                    <input type="text" name="username" placeholder='Username' />
+                    <input type="text" name="username" placeholder='First and Last name' />
                     <input type="text" name="email" placeholder='Email' />
                     <input type="password" placeholder='Password' name='password' />
                     <button disabled={loading}>{loading ? "Loading" : "Sign Up"}</button>

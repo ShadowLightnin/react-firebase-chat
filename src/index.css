@@ -16,14 +16,39 @@ body{
 }
 
 .container {
-  width: 80vw;
-  height: 90vh;
+  width: 80vw;             /* ✅ Original desktop size */
+  height: 90vh;            /* ✅ Original desktop height */
   background-color: rgba(18, 25, 40, 0.75);
   backdrop-filter: blur(19px) saturate(180%);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
   display: flex;
+  overflow: hidden;        /* 🚨 Prevents content overflow */
 }
+
+/* 📲 Media Query for Mobile Screens */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;  /* 🔄 Stack items vertically on mobile */
+      width: 95vw;             /* ✅ Maximize space on mobile */
+      height: 95vh;            /* ✅ Slightly taller for smaller screens */
+      padding: 15px;           /* 🔄 Keeps content from touching edges */
+  }
+
+  .login {
+      flex-direction: column;   /* 🔄 Stack login and register vertically */
+      gap: 30px;                /* 🔄 Reduced spacing for compact layout */
+  }
+
+  .separator {
+      width: 100%;              /* 🔄 Full-width separator for mobile */
+      height: 2px;              /* 🔄 Thin separator to save space */
+      background-color: #dddddd35;  
+      margin: 10px 0;            /* 🔄 Added spacing for balance */
+  }
+}
+
+
 
 ::-webkit-scrollbar{
 	width: 0 !important;
