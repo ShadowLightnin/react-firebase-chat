@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react"; 
 import "./chat.css";
 import EmojiPicker from "emoji-picker-react";
 import {
@@ -29,8 +29,10 @@ const Chat = () => {
   const endRef = useRef(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+    if (chat?.messages) {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chat?.messages]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
@@ -67,12 +69,12 @@ const Chat = () => {
       }
 
       await updateDoc(doc(db, "chats", chatId), {
-        messages: arrayUnion({
+        messages: [...(chat?.messages || []), {
           senderId: currentUser.id,
           text,
           createdAt: new Date(),
           ...(imgUrl && { img: imgUrl }),
-        }),
+        }],
       });
 
       const userIDs = [currentUser.id, user.id];
@@ -132,12 +134,15 @@ const Chat = () => {
             className={
               message.senderId === currentUser?.id ? "message own" : "message"
             }
-            key={message?.createAt}
+            key={message?.createdAt?.seconds || Math.random()}  // ✅ Fixed key issue
           >
             <div className="texts">
               {message.img && <img src={message.img} alt="" />}
               <p>{message.text}</p>
-              <span>{message.createdAt.toDate()}</span>
+              <span>
+                {new Date(message?.createdAt?.seconds * 1000).toLocaleString()}
+                {/* // ✅ Fixed date format */}
+              </span>
             </div>
           </div>
         ))}

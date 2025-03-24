@@ -43,6 +43,7 @@ const Detail = () => {
         <p>Lorem ipsum dolor sit amet.</p>
       </div>
       <div className="info">
+      {/* //comment out from here */}
         <div className="option">
           <div className="title">
             <span>Chat Settings</span>
@@ -108,7 +109,8 @@ const Detail = () => {
               <img src="./download.png" alt="" className="icon" />
             </div>
           </div>
-        </div>
+        </div> 
+        {/* //to here */}
         <div className="option">
           <div className="title">
             <span>Shared Files</span>
