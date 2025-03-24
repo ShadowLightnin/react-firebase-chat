@@ -1,5 +1,7 @@
 .detail{
     flex: 1;
+    padding-top: 250px; 
+    /* comment out padding if the commented out stuff it deail is restored */
 
     .user{
         padding: 30ox 30px;
