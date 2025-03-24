@@ -1,9 +1,9 @@
 import React from "react";
 import "./userInfo.css";
-import { useUserState } from "../../../lib/userStore";
+import { useUserStore } from "../../../lib/userStore";
 
 function UserInfo() {
-  const { currentUser } = useUserState();
+  const { currentUser } = useUserStore();
 
   return (
     <div className="userInfo">

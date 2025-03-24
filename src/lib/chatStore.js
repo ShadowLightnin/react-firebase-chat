@@ -1,7 +1,5 @@
-import { doc, getDoc } from "firebase/firestore";
 import { create } from "zustand";
-import { db } from "./firebase";
-import { useUserState } from "./userStore";
+import { useUserStore } from "./userStore";
 
 export const useChatStore = create((set) => ({
   chatId: null,
@@ -9,7 +7,7 @@ export const useChatStore = create((set) => ({
   isCurrentUserBlocked: false,
   isReceiverBlocked: false,
   changeChat: (chatId, user) => {
-    const { currentUser } = useUserState.getState();
+    const currentUser = useUserStore.getState().currentUser;
 
     // CHECK IF CURRENT USER IS BLOCKED
     if (user.blocked.includes(currentUser.id)) {
@@ -20,7 +18,8 @@ export const useChatStore = create((set) => ({
         isReceiverBlocked: false,
       });
     }
-    // CHECK IF CURRENT RECEIVER IS BLOCKED
+
+    // CHECK IF RECEIVER IS BLOCKED
     else if (currentUser.blocked.includes(user.id)) {
       return set({
         chatId,
@@ -28,11 +27,8 @@ export const useChatStore = create((set) => ({
         isCurrentUserBlocked: false,
         isReceiverBlocked: true,
       });
-    }
-
-    // If neither user is blocked
-    else {
-     return set({
+    } else {
+      return set({
         chatId,
         user,
         isCurrentUserBlocked: false,
@@ -42,9 +38,14 @@ export const useChatStore = create((set) => ({
   },
 
   changeBlock: () => {
-    set((state) => ({
-      ...state,
-      isReceiverBlocked: !state.isReceiverBlocked,
-    }));
+    set((state) => ({ ...state, isReceiverBlocked: !state.isReceiverBlocked }));
+  },
+  resetChat: () => {
+    set({
+      chatId: null,
+      user: null,
+      isCurrentUserBlocked: false,
+      isReceiverBlocked: false,
+    });
   },
 }));

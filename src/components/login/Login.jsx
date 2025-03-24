@@ -46,7 +46,7 @@ const Login = () => {
                 blocked: [],
             });
     
-            await setDoc(doc(db, "userschats", res.user.uid), {
+            await setDoc(doc(db, "userchats", res.user.uid), {
                 chats: []
             });
     
